@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <h1>Title: {{ object.title }}</h1>
+    <h2>Stage: {{ object.stage }}</h2>
+    <h3>Description: {{ object.description }}</h3>
+    <h3>Expiration date: {{ object.exercise_expiration_date|date }}</h3>
+    <p>Points: {{ object.points_to_gain }}</p>
+
+{% endblock %}
