@@ -12,14 +12,12 @@
 </head>
 <body>
 
-    {% block navbar %}
-    {% endblock %}
+    {% include "navbar.html" %}
 
     {%  block content %}
     {% endblock %}
 
-    {%  block footer %}
-    {% endblock %}
+    {% include "footer.html" %}
 
 </body>
 </html>

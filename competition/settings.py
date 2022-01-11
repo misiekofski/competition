@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     # The following apps are required:
+    'comp2022',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
@@ -42,7 +43,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
-    'comp2022'
 ]
 
 MIDDLEWARE = [
@@ -68,7 +68,6 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'django.template.context_processors.request',
             ],
         },
     },
@@ -110,12 +109,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
-
-TIME_ZONE = 'UTC'
-
+LANGUAGE_CODE = 'pl'
+TIME_ZONE = 'Europe/Warsaw'
 USE_I18N = True
-
 USE_TZ = True
 
 
@@ -128,11 +124,6 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-
-LOGIN_URL = 'login'
-LOGOUT_URL = 'logout'
-LOGIN_REDIRECT_URL = 'home'
 
 AUTHENTICATION_BACKENDS = [
      # Needed to login by username in Django admin, regardless of `allauth`
@@ -155,3 +146,19 @@ SOCIALACCOUNT_PROVIDERS = {
         }
     }
 }
+
+# Uncomment on production
+# ACCOUNT_EMAIL_REQUIRED=True
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+#
+# EMAIL_USE_TLS = True
+# EMAIL_HOST = os.environ['MAIL_HOST']
+# EMAIL_HOST_USER = os.environ['MAIL_FROM']
+# EMAIL_HOST_PASSWORD = os.environ['MAIL_PASSWORD']
+# EMAIL_PORT = os.environ['MAIL_PORT']
+# DEFAULT_FROM_EMAIL = os.environ['MAIL_FROM']
+#
+# ACCOUNT_EMAIL_REQUIRED = True
+# ACCOUNT_USERNAME_REQURIED = True
+# ACCOUNT_EMAIL_VERIFICATION = True
+# LOGIN_REDIRECT_URL = "/"
