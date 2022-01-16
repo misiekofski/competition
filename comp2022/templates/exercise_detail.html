@@ -1,11 +1,12 @@
 {% extends "base.html" %}
+{% load markdownify %}
 
 {% block content %}
 
     <div class="container">
         <h1>Tytuł: {{ object.title }}</h1>
         <h2>Etap: {{ object.stage }}</h2>
-        <h3 class="lead">Opis zadania: <br>{{ object.description }}</h3>
+        <h3 class="lead">Opis zadania: <br>{{ object.description | markdownify }}</h3>
         <figure class="text-end">
             <p>Termin nadsyłania odpowiedzi upływa: {{ object.exercise_expiration_date|date:'Y-m-d H:i' }}</p>
         </figure>

@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/4.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
-
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
+    'markdownify',
 ]
 
 MIDDLEWARE = [
@@ -119,6 +120,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = 'static/'
+PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
+STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static/')
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
@@ -146,6 +152,46 @@ SOCIALACCOUNT_PROVIDERS = {
         }
     }
 }
+
+MARKDOWNIFY = {
+    "default": {
+        "MARKDOWN_EXTENSIONS": [
+            'markdown.extensions.fenced_code',
+            'markdown.extensions.extra',
+            'markdown.extensions.codehilite',
+        ],
+        "STRIP": False,
+        "WHITELIST_TAGS": [
+            'a',
+            'abbr',
+            'acronym',
+            'b',
+            'blockquote',
+            'em',
+            'i',
+            'li',
+            'ol',
+            'p',
+            'strong',
+            'ul',
+            'code',
+            'span',
+            'div', 'class',
+            'pre', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6'
+        ],
+        "WHITELIST_ATTRS": [
+            'href',
+            'src',
+            'alt',
+            'class',
+        ],
+        "WHITELIST_PROTOCOLS": [
+            'http',
+            'https',
+        ]
+    }
+}
+
 
 # Uncomment on production
 # ACCOUNT_EMAIL_REQUIRED=True
