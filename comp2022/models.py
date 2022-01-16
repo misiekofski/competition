@@ -32,9 +32,12 @@ class Exercise(models.Model):
     points_to_gain = models.IntegerField()
     exercise_expiration_date = models.DateTimeField()
 
+    def __str__(self):
+        return f"ID: {self.pk}, Tytuł: {self.title}"
+
 
 class Solution(models.Model):
-    exercise = models.ForeignKey('Exercise', on_delete=models.CASCADE)
+    exercise = models.OneToOneField('Exercise', on_delete=models.CASCADE)
     solution = models.TextField()
 
 

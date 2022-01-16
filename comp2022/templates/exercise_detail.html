@@ -4,13 +4,26 @@
 {% block content %}
 
     <div class="container">
-        <h1>Tytuł: {{ object.title }}</h1>
-        <h2>Etap: {{ object.stage }}</h2>
-        <h3 class="lead">Opis zadania: <br>{{ object.description | markdownify }}</h3>
-        <figure class="text-end">
-            <p>Termin nadsyłania odpowiedzi upływa: {{ object.exercise_expiration_date|date:'Y-m-d H:i' }}</p>
-        </figure>
-        <p>Punkty do zdobycia: {{ object.points_to_gain }}</p>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item active" aria-current="page">Etap: {{ object.stage }}</li>
+            </ol>
+        </nav>
+
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mt-0 mb-1">#{{ object.pk }} - {{ object.title }}</h5>
+            </div>
+            <div class="card-body">
+                {{ object.description | markdownify }}
+            </div>
+            <div class="card-footer text-muted">
+                Punkty do zdobycia: {{ object.points_to_gain }}
+            </div>
+        </div>
+
+
+        <p>Termin nadsyłania odpowiedzi upływa: {{ object.exercise_expiration_date|date:'Y-m-d H:i' }}</p>
 
         <form action="" method="POST" class="row">
             {% csrf_token %}
