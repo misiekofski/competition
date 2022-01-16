@@ -2,27 +2,29 @@
 
 {% block content %}
 
-    <h2>Zadania</h2>
-    <table class="table">
-        <thead class="thead-dark">
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Etap</th>
-            <th scope="col">Nazwa</th>
-            <th scope="col">Punkty do zdobycia</th>
-        </tr>
-        </thead>
+    <div class="container">
+        <h2>Zadania</h2>
+        <table class="table">
+            <thead class="thead-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Etap</th>
+                <th scope="col">Nazwa</th>
+                <th scope="col">Punkty do zdobycia</th>
+            </tr>
+            </thead>
 
-        <tbody>
-        {% for e in object_list %}
-        <tr>
-            <th><a href="{% url 'exercise-detail' pk=e.pk %}">{{ e.pk }}</a></th>
-            <td>{{ e.stage }}</td>
-            <td>{{ e.title }}</td>
-            <td>{{ e.points_to_gain }}</td>
-        </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+            <tbody>
+            {% for e in object_list %}
+                <tr>
+                    <th><a href="{% url 'exercise-detail' pk=e.pk %}">{{ e.pk }}</a></th>
+                    <td>{{ e.stage }}</td>
+                    <td>{{ e.title }}</td>
+                    <td>{{ e.points_to_gain }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
 
 {% endblock %}

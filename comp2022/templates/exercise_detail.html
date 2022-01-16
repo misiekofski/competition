@@ -2,10 +2,26 @@
 
 {% block content %}
 
-    <h1>Title: {{ object.title }}</h1>
-    <h2>Stage: {{ object.stage }}</h2>
-    <h3>Description: {{ object.description }}</h3>
-    <h3>Expiration date: {{ object.exercise_expiration_date|date }}</h3>
-    <p>Points: {{ object.points_to_gain }}</p>
+    <div class="container">
+        <h1>Tytuł: {{ object.title }}</h1>
+        <h2>Etap: {{ object.stage }}</h2>
+        <h3 class="lead">Opis zadania: <br>{{ object.description }}</h3>
+        <figure class="text-end">
+            <p>Termin nadsyłania odpowiedzi upływa: {{ object.exercise_expiration_date|date:'Y-m-d H:i' }}</p>
+        </figure>
+        <p>Punkty do zdobycia: {{ object.points_to_gain }}</p>
+
+        <form action="" method="POST" class="row">
+            {% csrf_token %}
+            <div class="col-sm-3">
+                <input type="text" class="form-control" id="answer" name="answer" placeholder="Odpowiedź" required>
+            </div>
+
+            <div class="col-auto">
+                <button type="submit" class="btn btn-primary">Wyślij</button>
+            </div>
+        </form>
+
+    </div>
 
 {% endblock %}
